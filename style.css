@@ -1,0 +1,36 @@
+body{
+    background: #eee;
+}
+
+#form{
+    border: solid gray 2px;
+    width: 50%;
+    border-radius: 5px;
+    margin: 100px auto;
+    background: white;
+    padding: 25px;
+}
+
+#loginbtn{
+    color: #000000;
+    background: #ffffff;
+    padding: 10px;
+    margin-left: 1%;
+}
+
+#registerbtn{
+    
+    color: #ffffff;
+    background: #000000;
+    padding: 10px;
+    margin-left: 1%;
+
+}
+
+#loginalign{
+    text-align: left;
+}
+
+#insertalign{
+    text-align: left;
+}
