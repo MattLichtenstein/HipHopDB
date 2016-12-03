@@ -1,5 +1,5 @@
 body{
-    background: #eee;
+    background-image: url("background.jpg");
 }
 
 #form{
@@ -29,8 +29,13 @@ body{
 
 #loginalign{
     text-align: left;
+    margin-right: 10%;
 }
 
 #insertalign{
     text-align: left;
+}
+
+#searcher{
+    text-align: right;
 }

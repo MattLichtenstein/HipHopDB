@@ -1,21 +1,22 @@
-<?php 
-
+<?php
 
 mysql_connect ("localhost", "root", "m123") or die ("Could not connect");
 mysql_select_db ("hiphop") or die ("No database selected");
 
 $artistname = $_POST['artistname'];
+$id = $_POST['id'];
 
 
-mysql_query("INSERT INTO artists VALUES ('','$artistname')") or die ("Query could not be completed");
+    $query = "UPDATE artists SET name= '$artistname' WHERE id='$id'";
+    $result = mysql_query($query);
 
-Echo "'$artistname' has been entered into the database"; 
+echo "Artist data for $artistname has been update" 
+
 
 ?>
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-
 <br>
 <a href="home.php"> Home </a> <br>
-<a href="insertform.php"> Insert Again </a>
+<a href="displayartists.php"> Back to Artists </a>

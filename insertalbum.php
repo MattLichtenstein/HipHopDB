@@ -1,7 +1,12 @@
 
+<link rel="stylesheet" type="text/css" href="style.css">
+
 <form action="insertalbumdb.php" method = "POST">
   Album name:
   <input type="text" name="albumname" id = "albumname">
+  <br>
+  Artist Name:
+  <input type="text" name="artistname" id = "artistname">
   <br>
   Release Date:
   <input type="text" name="releasedate" id = "releasedate" placeholder = "MM/DD/YYYY">

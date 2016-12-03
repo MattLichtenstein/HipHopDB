@@ -29,3 +29,5 @@ mysql_select_db ("hiphop") or die ("No database selected");
 
 
 ?>
+
+<link rel="stylesheet" type="text/css" href="style.css">
