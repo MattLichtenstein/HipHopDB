@@ -20,11 +20,21 @@ $recordsong = mysql_query($sqlsong);
 
 $sqlfeature = "SELECT * FROM songs WHERE features LIKE '%$searchquery%'";
 $recordfeature = mysql_query($sqlfeature);
+
+$songandalbum = "SELECT track_name, name, runtime, tracks FROM songs INNER JOIN albums ON (name = album_name)  WHERE track_name LIKE '%$searchquery%'";
+$recordsongandalbum = mysql_query($songandalbum)
+
 ?>
 
 
 
 <link rel="stylesheet" type="text/css" href="style.css">
+
+<form action="searchdb.php" method = "POST">
+         <strong>Search Again</strong> <br>
+          <input type="text" name="search" id = "search" placeholder= "i.e. Kanye West, Yeezus">
+          <input type="submit" value="Search">
+        </form><br>
 
 <br>
 <div style="text-align: right;">
@@ -34,7 +44,7 @@ $recordfeature = mysql_query($sqlfeature);
 
 <html>
 
-Artists:
+<strong>Artists:</strong>
 
 <head>
 
@@ -82,7 +92,7 @@ Artists:
 
 <html>
 
-<br>Albums:
+<br><strong>Albums:</strong>
 
 <head>
 
@@ -112,7 +122,7 @@ Artists:
         echo "<tr>";
 
 echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['name']."</td>";
-        echo "<td>".$album['artist_name']."</td>";
+       echo "<td><a href='producesrelation.php?name=" . $album['artist_name'] . "'>".$album['artist_name']."</td>";
         echo "<td>".$album['release_date']."</td>";
         echo "<td>".$album['runtime']."</td>";
         echo "<td>".$album['tracks']."</td>";
@@ -143,7 +153,7 @@ echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['n
 
 <html>
 
-<br>Songs:
+<br><strong>Songs:</strong>
 
 <head>
 
@@ -175,8 +185,8 @@ echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['n
         echo "<tr>";
 
         echo "<td>".$song['track_name']."</td>";
-        echo "<td>".$song['album_name']."</td>";
-        echo "<td>".$song['artist_name']."</td>";
+echo "<td><a href='containsrelation.php?name=" . $song['album_name'] . "'>".$song['album_name']."</td>";
+       echo "<td><a href='producesrelation.php?name=" . $song['artist_name'] . "'>".$song['artist_name']."</td>";
         echo "<td>".$song['billboard_peak']."</td>";
         echo "<td>".$song['features']."</td>";
         echo "<td><a href=\"" . $song['song_link'] . "\">Youtube"; 
@@ -206,7 +216,7 @@ echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['n
 
 <html>
 
-<br>Features:
+<br><strong>Features:</strong>
 
 <head>
 
@@ -238,8 +248,8 @@ echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['n
         echo "<tr>";
 
         echo "<td>".$song['track_name']."</td>";
-        echo "<td>".$song['album_name']."</td>";
-        echo "<td>".$song['artist_name']."</td>";
+echo "<td><a href='containsrelation.php?name=" . $song['album_name'] . "'>".$song['album_name']."</td>";
+       echo "<td><a href='producesrelation.php?name=" . $song['artist_name'] . "'>".$song['artist_name']."</td>";
         echo "<td>".$song['billboard_peak']."</td>";
         echo "<td>".$song['features']."</td>";
         echo "<td><a href=\"" . $song['song_link'] . "\">Youtube"; 
@@ -269,10 +279,66 @@ echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['n
 
 
 
+<html>
+
+<br><strong>Songs with Album Information:</strong>
+
+<head>
+
+
+
+</head>
+
+<body>
+
+    <table width = "800" border = "1" cellpadding = "5" cellspacing = "1">
+    <tr>
+
+        <th> Track Name </th>
+        <th> Album Name </th>
+        <th> Runtime </th>
+        <th> # of Tracks </th>
+    
+    </tr>
+
+    <?php
+
+    while($songandalbums = mysql_fetch_assoc($recordsongandalbum)){
+
+        echo "<tr>";
+
+        echo "<td>".$songandalbums['track_name']."</td>";
+echo "<td><a href='containsrelation.php?name=" . $songandalbums['name'] . "'>".$songandalbums['name']."</td>";
+        echo "<td>".$songandalbums['runtime']."</td>";
+        echo "<td>".$songandalbums['tracks']."</td>";
+  
+         echo "</tr>";
+
+
+    }
+
+    ?>
+
+
+    </table>
+
+</body>
+
+</html>
+
+
+
+
+
 
 
 <html>
-
+<br><br>
+<form action="searchdb.php" method = "POST">
+         <strong>Search Again</strong> <br>
+          <input type="text" name="search" id = "search" placeholder= "i.e. Kanye West, Yeezus">
+          <input type="submit" value="Search">
+        </form><br>
 
 <br><br>
 Didn't find what you were looking for? Search the Web!
@@ -330,3 +396,8 @@ Didn't find what you were looking for? Search the Web!
 
 
 </html>
+
+
+
+
+

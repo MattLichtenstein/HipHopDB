@@ -39,7 +39,7 @@ $record = mysql_query($sql);
         echo "<tr>";
 
         echo "<td><a href='containsrelation.php?name=" . $album['name'] . "'>".$album['name']."</td>";
-        echo "<td>".$album['artist_name']."</td>";
+ echo "<td><a href='producesrelation.php?name=" . $album['artist_name'] . "'>".$album['artist_name']."</td>";
         echo "<td>".$album['release_date']."</td>";
         echo "<td>".$album['runtime']."</td>";
         echo "<td>".$album['tracks']."</td>";

@@ -46,7 +46,7 @@
           Search:<br>
           <input type="text" name="search" id = "search" placeholder= "i.e. Kanye West, Yeezus">
           <br>
-          <input type="submit" value="Go">
+          <input type="submit" value="Search">
         </form>
 
 

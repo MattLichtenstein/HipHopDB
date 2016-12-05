@@ -41,8 +41,8 @@ $record = mysql_query($sql);
         echo "<tr>";
 
         echo "<td>".$song['track_name']."</td>";
-        echo "<td>".$song['album_name']."</td>";
-        echo "<td>".$song['artist_name']."</td>";
+echo "<td><a href='containsrelation.php?name=" . $song['album_name'] . "'>".$song['album_name']."</td>";
+       echo "<td><a href='producesrelation.php?name=" . $song['artist_name'] . "'>".$song['artist_name']."</td>";
         echo "<td>".$song['billboard_peak']."</td>";
         echo "<td>".$song['features']."</td>";
         echo "<td><a href=\"" . $song['song_link'] . "\">Youtube"; 
